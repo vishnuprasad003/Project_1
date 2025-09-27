@@ -1,0 +1,29 @@
+{%extends "patient/patientBase.html"  %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="d-flex justify-content-center">
+<form method="get" class="form-inline  search-form" style="float:right;">
+                    <div class="md-form my-0 d-flex justify-content-center">
+
+                        {{department_filter.form}}
+                        <button class="btn btn " type="submit">Search</button>
+                    </div>
+                </form>
+  </div>
+<div class="d-flex flex-wrap gap-3">
+{% for viewDP in schedule %}
+<div class="card" style="width: 18rem;">
+  <img src="{{viewDP.Department_image.url}}" height="200px" class="card-img-top" alt="Department_image">
+  <div class="card-body">
+
+    <h5 class="card-title">Name: {{viewDP.Department_name}}</h5>
+    <p class="card-text">Phone_NO: {{viewDP.Department_phone_no}}</p>
+    <p class="card-text">Email: {{viewDP.Department_email}}</p>
+
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+
+  </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

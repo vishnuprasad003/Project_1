@@ -1,0 +1,27 @@
+{%extends "index1.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+
+      <th scope="col">Department_name</th>
+      <th scope="col">Department_phone_no</th>
+      <th scope="col">Department_email</th>
+      <th scope="col">Delete</th>
+      <th scope="col">Update</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+     {% for data in view%}
+      <td>{{data.Department_name}}</td>
+      <td>{{data.Department_phone_no}}</td>
+      <td>{{data.Department_email}}</td>
+      <td><a href="{% url 'delete' data.id %}"><button class="btn btn-danger">Delete</button></a></td>
+      <td><a href="{% url 'update' data.id %}"><button class="btn btn-warning">Update</button></a></td>
+    </tr>
+  {% endfor%}
+  </tbody>
+</table>
+{% endblock %}

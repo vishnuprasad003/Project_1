@@ -1,0 +1,28 @@
+{%extends "index1.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+
+      <th scope="col">Patient_name</th>
+      <th scope="col">Patient_email</th>
+      <th scope="col">Patient_phone_no</th>
+      <th scope="col">Delete</th>
+      <th scope="col">Update</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+     {% for data in view%}
+      <td>{{data.Patient_name}}</td>
+
+      <td>{{data.Patient_email}}</td>
+       <td>{{data.Patient_phone_no}}</td>
+      <td><a href="{% url 'deletePatient' data.id %}"><button class="btn btn-danger">Delete</button></a></td>
+      <td><a href="{% url 'PatientUpdate' data.id %}"><button class="btn btn-warning">Update</button></a></td>
+    </tr>
+  {% endfor%}
+  </tbody>
+</table>
+{% endblock %}
