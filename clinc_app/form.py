@@ -1,7 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.forms import DateInput, TimeInput
 
-from clinc_app.models import Patient, Department, Doctor, Login
+from clinc_app.models import Patient, Department, Doctor, Login, doctor_shedule, BookingAppointment
 
 
 class LoginRegistration(UserCreationForm):
@@ -33,3 +34,25 @@ class Doctor_form(forms.ModelForm):
         model = Doctor
         fields ="__all__"
         exclude = ('user',)
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+class TimeInput(forms.TimeInput):
+    input_type = 'time'
+
+class doctor_shedule_form(forms.ModelForm):
+    date=forms.DateField(widget=DateInput)
+    start_time=forms.TimeField(widget=TimeInput)
+    end_time=forms.TimeField(widget=TimeInput)
+
+    class Meta:
+        model = doctor_shedule
+        fields = ('date','start_time','end_time')
+
+
+class Appointment_form(forms.ModelForm):
+
+    class Meta:
+        model = BookingAppointment
+        fields = ('statusFiled',)

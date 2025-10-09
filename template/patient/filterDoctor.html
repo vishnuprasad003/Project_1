@@ -1,0 +1,31 @@
+{% extends "patient/patientBase.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <table class="table">
+  <thead>
+    <tr>
+
+      <th scope="col">Doctor_name</th>
+
+      <th scope="col">Doctor_phone_no</th>
+      <th scope="col">Doctor_email</th>
+      <th scope="col">Schedule Time</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+     {% for data in data1%}
+     <tr>
+      <td>{{data.Doctor_name}}</td>
+
+
+       <td>{{data.Doctor_phone_no}}</td>
+        <td>{{data.Doctor_email}}</td>
+      <td><a href="{% url 'FilterSchedule' data.id %}"><button class="btn btn-danger">schedule time</button></a></td>
+
+    </tr>
+  {% endfor%}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,33 @@
+{%extends "admin/adminBase.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+
+      <th scope="col">DOCTOR_NAME</th>
+      <th scope="col">DOCTOR_DEPARTMENT</th>
+      <th scope="col">SCHEDULE_DATE</th>
+      <th scope="col">SCHEDULE_START_TIME</th>
+       <th scope="col">SCHEDULE_END_TIME</th>
+      <th scope="col">DELETE</th>
+      <th scope="col">UPDATE</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for data in scheduleView %}
+    <tr>
+
+      <td>{{data.doctor.Doctor_name}}</td>
+     <td>{{data.doctor.Doctor_Department}}</td>
+
+      <td>{{data.date}}</td>
+       <td>{{data.start_time}}</td>
+        <td>{{data.end_time}}</td>
+      <td><a href="{% url 'scheduleDelete' data.id %}"><button class="btn btn-danger">Delete</button></a></td>
+      <td><a href="{% url 'PatientUpdate' data.id %}"><button class="btn btn-warning">Update</button></a></td>
+    </tr>
+  {% endfor%}
+  </tbody>
+</table>
+{% endblock %}

@@ -48,3 +48,16 @@ class Doctor(models.Model):
 
     def __str__(self):
         return self.Doctor_name
+
+class doctor_shedule(models.Model):
+    doctor=models.ForeignKey("Doctor",on_delete=models.DO_NOTHING)
+    date=models.DateField()
+    start_time=models.TimeField()
+    end_time=models.TimeField()
+
+class BookingAppointment(models.Model):
+    doctor=models.ForeignKey("Doctor",on_delete=models.DO_NOTHING)
+    patient=models.ForeignKey("Patient",on_delete=models.DO_NOTHING)
+    scheduleTime=models.ForeignKey("doctor_shedule",on_delete=models.DO_NOTHING)
+    statusFiled=models.IntegerField(default=0)
+

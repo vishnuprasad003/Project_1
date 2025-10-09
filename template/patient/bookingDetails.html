@@ -6,11 +6,13 @@
                     <div class="md-form my-0 d-flex justify-content-center">
 
                         {{department_filter.form}}
-                        <button class="btn btn " type="submit">Search</button>
+                        <button class="btn btn btn btn-success" type="submit">Search</button>
                     </div>
                 </form>
   </div>
-<div class="d-flex flex-wrap gap-3">
+
+
+<div class="d-flex flex-wrap gap-3 mt-4">
 {% for viewDP in schedule %}
 <div class="card" style="width: 18rem;">
   <img src="{{viewDP.Department_image.url}}" height="200px" class="card-img-top" alt="Department_image">
@@ -20,7 +22,7 @@
     <p class="card-text">Phone_NO: {{viewDP.Department_phone_no}}</p>
     <p class="card-text">Email: {{viewDP.Department_email}}</p>
 
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="{% url 'FilterDoctor' viewDP.id %}" class="btn btn-primary">Make an appointment</a>
 
   </div>
 </div>

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from clinc_app.filters import departmentFilter, PatientFilter
 from clinc_app.form import patient_form, Doctor_form, Department_form
-from clinc_app.models import Patient, Doctor, Department
+from clinc_app.models import Patient, Doctor, Department, doctor_shedule
 
 
 def patient_view1(request):
@@ -73,3 +73,12 @@ def update_data(request,id):
             form2.save()
         return redirect("view1")
     return render(request,"admin/departmentUpdate.html",{"update":form1})
+
+def DoctorScheduleView(request):
+    data=doctor_shedule.objects.all()
+    return render(request,"admin/schedule_view.html",{"scheduleView":data})
+def scheduleDelete(request,id):
+    data=doctor_shedule.objects.get(id=id)
+    data.delete()
+    return redirect("base1")
+

@@ -1,0 +1,31 @@
+{% extends "patient/patientBase.html" %}
+{% load crispy_forms_tags %}
+{% block content%}
+<table class="table">
+  <thead>
+    <tr>
+
+      <th scope="col">DATE</th>
+
+      <th scope="col">START TIME</th>
+      <th scope="col">END TIME</th>
+      <th scope="col"></th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+     {% for data in data1 %}
+     <tr>
+      <td>{{data.date}}</td>
+
+
+       <td>{{data.start_time}}</td>
+        <td>{{data.end_time}}</td>
+      <td><a href="{% url 'AppointmentForm' data.id %}"><button class="btn btn-danger">Book your slot</button></a></td>
+
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

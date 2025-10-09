@@ -62,7 +62,7 @@
 <!--            </li>-->
             <li class="sidebar-item">
 
-              <a class="sidebar-link" href="{% url 'base2'%}" aria-expanded="false">
+              <a class="sidebar-link" href="#" aria-expanded="false">
 <!--                <i class="ti ti-atom"></i>-->
                 <i class="fa-solid fa-house"></i>
                 <span class="hide-menu">Home</span>
@@ -74,7 +74,7 @@
             <!-- ---------------------------------- -->
             <li class="sidebar-item">
               <a class="sidebar-link justify-content-between"
-                href="#" aria-expanded="false">
+                href="{% url 'detailP' %}" aria-expanded="false">
                 <div class="d-flex align-items-center gap-3">
                   <span class="d-flex">
 <!--                    <i class="ti ti-aperture"></i>-->
@@ -88,33 +88,47 @@
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link justify-content-between"
-                href="{% url 'Department_name'%}" aria-expanded="false">
+                href="{% url 'detail' %}" aria-expanded="false">
                 <div class="d-flex align-items-center gap-3">
                   <span class="d-flex">
 <!--                    <i class="ti ti-shopping-cart"></i>-->
                     <i class="fa-solid fa-eye"></i>
                   </span>
-                  <span class="hide-menu">Department</span>
+                  <span class="hide-menu">My Pofile</span>
+<!--                  <a href=>View</a>-->
+                </div>
+
+              </a>
+            </li>
+             <li class="sidebar-item">
+              <a class="sidebar-link justify-content-between"
+                href="{% url 'schedule' %}" aria-expanded="false">
+                <div class="d-flex align-items-center gap-3">
+                  <span class="d-flex">
+<!--                    <i class="ti ti-shopping-cart"></i>-->
+                    <i class="fa-solid fa-eye"></i>
+                  </span>
+                  <span class="hide-menu">Schedule Time</span>
 <!--                  <a href=>View</a>-->
                 </div>
 
               </a>
             </li>
              </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link justify-content-between"
-                href="#" aria-expanded="false">
-                <div class="d-flex align-items-center gap-3">
-                  <span class="d-flex">
-<!--                    <i class="ti ti-shopping-cart"></i>-->
-                    <i class="fa-solid fa-user-doctor"></i>
-                  </span>
-                  <span class="hide-menu">Doctor</span>
-<!--                  <a href=>View</a>-->
-                </div>
+<!--            <li class="sidebar-item">-->
+<!--              <a class="sidebar-link justify-content-between"-->
+<!--                href="#" aria-expanded="false">-->
+<!--                <div class="d-flex align-items-center gap-3">-->
+<!--                  <span class="d-flex">-->
+<!--&lt;!&ndash;                    <i class="ti ti-shopping-cart"></i>&ndash;&gt;-->
+<!--                    <i class="fa-solid fa-user-doctor"></i>-->
+<!--                  </span>-->
+<!--                  <span class="hide-menu">Doctor</span>-->
+<!--&lt;!&ndash;                  <a href=>View</a>&ndash;&gt;-->
+<!--                </div>-->
 
-              </a>
-            </li>
+<!--              </a>-->
+<!--            </li>-->
 <!--            <li class="sidebar-item">-->
 <!--              <a class="sidebar-link justify-content-between has-arrow" href="javascript:void(0)" aria-expanded="false">-->
 <!--                <div class="d-flex align-items-center gap-3">-->

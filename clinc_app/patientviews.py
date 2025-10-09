@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 
 from clinc_app.filters import departmentFilter
-from clinc_app.form import Doctor_form, patient_form
-from clinc_app.models import Patient, Department
+from clinc_app.form import Doctor_form, patient_form, Appointment_form
+from clinc_app.models import Patient, Department, Doctor, doctor_shedule, BookingAppointment
 
 
 def profileViewP(request):
@@ -33,3 +33,37 @@ def department_booking(request):
 
     }
     return render(request,"patient/bookingDetails.html",context)
+
+def FilterDoctor(request,id):
+    data=Doctor.objects.filter(Doctor_Department=id)
+
+    return render(request,"patient/filterDoctor.html",{"data1":data})
+
+def view_schedule(request,id):
+    # doctor=Doctor.objects.filter(Doctor_Department=id)
+    # print(doctor)
+    data=doctor_shedule.objects.filter(doctor=id)
+
+    return render(request,"patient/doctor_schedule_view.html",{"data1":data})
+def Appointment(request,id):
+    user_data = request.user
+    patient_data = Patient.objects.get(user=user_data)
+    print(patient_data)
+    schedule_data = doctor_shedule.objects.get(id=id)
+    print(schedule_data)
+    print(schedule_data.doctor)
+    Doctor_details=schedule_data.doctor
+    print("Doctor_details",Doctor_details)
+    obj = BookingAppointment()
+    obj.doctor = Doctor_details
+    obj.patient= patient_data
+    obj.scheduleTime= schedule_data
+    obj.save()
+    return redirect("department_booking")
+    # return render(request,"patient/AppointmentTable.html")
+
+
+
+
+
+

@@ -27,13 +27,22 @@ urlpatterns = [
 
     path('adminViewP',adminviews.patient_view1,name="view4"),
     path('adminViewDo',adminviews.doctor_view1,name="view5"),
+    path('scheduleView',adminviews.DoctorScheduleView,name="scheduleView"),
+    path('scheduleDelete/<int:id>/', adminviews.scheduleDelete, name="scheduleDelete"),
 
     path('detail',doctorviews.detail,name="detail"),
     path('detailP',doctorviews.Patient_Details,name="detailP"),
     path('editD/<int:id>/',doctorviews.edit,name="editD"),
+    path('schedule',doctorviews.doctor_schedules,name="schedule"),
+    path('scheduleViewD',doctorviews.scheduleViewD,name="scheduleViewD"),
+    path('scheduleDelete/<int:id>/',doctorviews.scheduleDelete,name="scheduleDelete"),
+
 
     path('profileViewP', patientviews.profileViewP, name="profileViewP"),
     path('editP/<int:id>/', patientviews.editP, name="editP"),
-    path('department_booking',patientviews.department_booking,name="department_booking")
+    path('department_booking',patientviews.department_booking,name="department_booking"),
+    path('FilterDoctor/<int:id>/',patientviews.FilterDoctor,name="FilterDoctor"),
+    path('FilterSchedule/<int:id>/',patientviews.view_schedule,name="FilterSchedule"),
+    path('AppointmentForm/<int:id>/',patientviews.Appointment,name="AppointmentForm")
 
 ]

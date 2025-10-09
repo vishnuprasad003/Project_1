@@ -20,3 +20,4 @@ class PatientFilter(django_filters.FilterSet):
     class Meta:
         model=Patient
         fields=('Patient_phone_no','Patient_blood_group',)
+
