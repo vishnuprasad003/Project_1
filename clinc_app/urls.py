@@ -29,6 +29,7 @@ urlpatterns = [
     path('adminViewDo',adminviews.doctor_view1,name="view5"),
     path('scheduleView',adminviews.DoctorScheduleView,name="scheduleView"),
     path('scheduleDelete/<int:id>/', adminviews.scheduleDelete, name="scheduleDelete"),
+    path('bookedDetails',adminviews.booking_details_view,name="bookedDetails"),
 
     path('detail',doctorviews.detail,name="detail"),
     path('detailP',doctorviews.Patient_Details,name="detailP"),
@@ -36,6 +37,8 @@ urlpatterns = [
     path('schedule',doctorviews.doctor_schedules,name="schedule"),
     path('scheduleViewD',doctorviews.scheduleViewD,name="scheduleViewD"),
     path('scheduleDelete/<int:id>/',doctorviews.scheduleDelete,name="scheduleDelete"),
+    path('appointmentDetails',doctorviews.booking_details,name="appointmentDetails"),
+
 
 
     path('profileViewP', patientviews.profileViewP, name="profileViewP"),
@@ -43,6 +46,8 @@ urlpatterns = [
     path('department_booking',patientviews.department_booking,name="department_booking"),
     path('FilterDoctor/<int:id>/',patientviews.FilterDoctor,name="FilterDoctor"),
     path('FilterSchedule/<int:id>/',patientviews.view_schedule,name="FilterSchedule"),
-    path('AppointmentForm/<int:id>/',patientviews.Appointment,name="AppointmentForm")
+    path('AppointmentForm/<int:id>/',patientviews.Appointment,name="AppointmentForm"),
+    path('BookingDetailView/',patientviews.booking_details_view,name="BookingDetailView"),
+    path('deleteBookingDetails/<int:id>/',patientviews.delete_booking_details,name="deleteBookingDetails")
 
 ]

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from clinc_app.filters import departmentFilter, PatientFilter
 from clinc_app.form import patient_form, Doctor_form, Department_form
-from clinc_app.models import Patient, Doctor, Department, doctor_shedule
+from clinc_app.models import Patient, Doctor, Department, doctor_shedule, BookingAppointment
 
 
 def patient_view1(request):
@@ -81,4 +81,6 @@ def scheduleDelete(request,id):
     data=doctor_shedule.objects.get(id=id)
     data.delete()
     return redirect("base1")
-
+def booking_details_view(request):
+    data=BookingAppointment.objects.all()
+    return render(request,"admin/BookingDetailsView.html",{"booking_details_view":data})

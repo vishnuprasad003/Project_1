@@ -1,0 +1,36 @@
+{%extends "admin/adminBase.html"  %}
+{% load crispy_forms_tags %}
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+
+      <th scope="col">Doctor_name</th>
+      <th scope="col">Department_name</th>
+      <th scope="col">Patient_Name</th>
+      <th scope="col">ScheduleTime</th>
+      <th scope="col"> </th>
+      <th scope="col"> </th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+
+     {% for data in booking_details_view %}
+     <tr>
+      <td>{{data.doctor}}</td>
+        <td>{{data.doctor.Doctor_Department.Department_name}}</td>
+
+       <td>{{data.patient}}</td>
+        <td>{{data.scheduleTime.date}}</td>
+       <td>{{data.scheduleTime.start_time}}</td>
+       <td>{{data.scheduleTime.end_time}}</td>
+
+
+    </tr>
+  {% endfor%}
+  </tbody>
+</table>
+
+{% endblock %}

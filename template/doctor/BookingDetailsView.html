@@ -1,0 +1,36 @@
+{%extends "patient/patientBase.html"  %}
+{% load crispy_forms_tags %}
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+
+      <th scope="col"></th>
+
+      <th scope="col">Patient_Name</th>
+      <th scope="col">ScheduleTime</th>
+      <th scope="col"> </th>
+      <th scope="col"> </th>
+      <th scope="col">Delete</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+     {% for data in BookingView %}
+     <tr>
+      <td></td>
+
+
+       <td>{{data.patient}}</td>
+        <td>{{data.scheduleTime.date}}</td>
+       <td>{{data.scheduleTime.start_time}}</td>
+       <td>{{data.scheduleTime.end_time}}</td>
+      <td><a href="{% url 'deleteBookingDetails' data.id %}"><button class="btn btn-danger">Delete</button></a></td>
+
+    </tr>
+  {% endfor%}
+  </tbody>
+</table>
+
+{% endblock %}

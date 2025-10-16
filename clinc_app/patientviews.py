@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect
 
 from clinc_app.filters import departmentFilter
@@ -44,23 +45,48 @@ def view_schedule(request,id):
     # print(doctor)
     data=doctor_shedule.objects.filter(doctor=id)
 
+    # for i in data:
+    #     print("data",i)
+    # BookingCound=BookingAppointment.objects.filter( scheduleTime= data ,doctor=id)
+    # print(BookingCound)
+    # count=len(BookingCound)
+    # print(count)
+
+
     return render(request,"patient/doctor_schedule_view.html",{"data1":data})
+
+
 def Appointment(request,id):
     user_data = request.user
     patient_data = Patient.objects.get(user=user_data)
-    print(patient_data)
     schedule_data = doctor_shedule.objects.get(id=id)
-    print(schedule_data)
-    print(schedule_data.doctor)
     Doctor_details=schedule_data.doctor
-    print("Doctor_details",Doctor_details)
-    obj = BookingAppointment()
-    obj.doctor = Doctor_details
-    obj.patient= patient_data
-    obj.scheduleTime= schedule_data
-    obj.save()
-    return redirect("department_booking")
-    # return render(request,"patient/AppointmentTable.html")
+    bookingCount=BookingAppointment.objects.filter(doctor = Doctor_details,scheduleTime = schedule_data)
+
+    count = len(bookingCount)
+    print(count)
+    if count<10:
+        obj=BookingAppointment()
+        obj.doctor=Doctor_details
+        obj.patient=patient_data
+        obj.scheduleTime=schedule_data
+        obj.save()
+        return redirect("BookingDetailView")
+    else:
+        messages.info(request ,"No slot available")
+
+    return render(request,"patient/new_scheduleView.html",{"data1":schedule_data})
+
+def booking_details_view(request):
+    user_data=request.user
+    booking_detailsView=Patient.objects.get(user=user_data)
+    data=BookingAppointment.objects.filter(patient=booking_detailsView)
+    return render(request,"patient/bookingDetailsView.html",{"bookingDetailView":data})
+
+def delete_booking_details(request,id):
+    data=BookingAppointment.objects.get(id=id)
+    data.delete()
+    return redirect("BookingDetailView")
 
 
 

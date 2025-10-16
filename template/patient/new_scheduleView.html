@@ -28,18 +28,18 @@
   </thead>
   <tbody>
 
-     {% for data in data1 %}
+
      <tr>
-      <td>{{data.date}}</td>
+      <td>{{data1.date}}</td>
 
 
-       <td>{{data.start_time}}</td>
-        <td>{{data.end_time}}</td>
+       <td>{{data1.start_time}}</td>
+        <td>{{data1.end_time}}</td>
 
-      <td><a href="{% url 'AppointmentForm' data.id %}"><button class="btn btn-danger">Book your slot</button></a></td>
+      <td><a href="#"><button class="btn btn-danger">Book your slot</button></a></td>
 
     </tr>
-  {% endfor %}
+
   </tbody>
 </table>
 <script>
