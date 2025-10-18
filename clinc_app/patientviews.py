@@ -41,19 +41,19 @@ def FilterDoctor(request,id):
     return render(request,"patient/filterDoctor.html",{"data1":data})
 
 def view_schedule(request,id):
-    # doctor=Doctor.objects.filter(Doctor_Department=id)
-    # print(doctor)
     data=doctor_shedule.objects.filter(doctor=id)
+    schedule_list=[]
 
-    # for i in data:
-    #     print("data",i)
-    # BookingCound=BookingAppointment.objects.filter( scheduleTime= data ,doctor=id)
-    # print(BookingCound)
-    # count=len(BookingCound)
-    # print(count)
+    for schedule in data:
 
+        bookingCount=BookingAppointment.objects.filter(doctor=id,scheduleTime=schedule)
+        count=len(bookingCount)
+        print(count)
+        schedule_list.append(count)
 
-    return render(request,"patient/doctor_schedule_view.html",{"data1":data})
+        count_and_data = zip(data,schedule_list)
+
+    return render(request,"patient/doctor_schedule_view.html",{"data_with_count":count_and_data})
 
 
 def Appointment(request,id):
@@ -74,8 +74,9 @@ def Appointment(request,id):
         return redirect("BookingDetailView")
     else:
         messages.info(request ,"No slot available")
+        return redirect("FilterSchedule",id=Doctor_details.id)
 
-    return render(request,"patient/new_scheduleView.html",{"data1":schedule_data})
+    # return render(request,"patient/new_scheduleView.html",{"data1":schedule_data})
 
 def booking_details_view(request):
     user_data=request.user

@@ -62,7 +62,7 @@
 <!--            </li>-->
             <li class="sidebar-item">
 
-              <a class="sidebar-link" href="#" aria-expanded="false">
+              <a class="sidebar-link" href="{% url 'base2' %}" aria-expanded="false">
 <!--                <i class="ti ti-atom"></i>-->
                 <i class="fa-solid fa-house"></i>
                 <span class="hide-menu">Home</span>
@@ -114,7 +114,21 @@
 
               </a>
             </li>
-             </li>
+               <li class="sidebar-item">
+              <a class="sidebar-link justify-content-between"
+                href="{% url 'scheduleViewD' %}" aria-expanded="false">
+                <div class="d-flex align-items-center gap-3">
+                  <span class="d-flex">
+<!--                    <i class="ti ti-shopping-cart"></i>-->
+                    <i class="fa-solid fa-eye"></i>
+                  </span>
+                  <span class="hide-menu">Schedule Time View</span>
+<!--                  <a href=>View</a>-->
+                </div>
+
+              </a>
+            </li>
+
 <!--            <li class="sidebar-item">-->
 <!--              <a class="sidebar-link justify-content-between"-->
 <!--                href="#" aria-expanded="false">-->

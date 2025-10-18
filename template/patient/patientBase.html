@@ -86,6 +86,20 @@
 
               </a>
             </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link justify-content-between"
+                href="{% url 'profileViewP' %}" aria-expanded="false">
+                <div class="d-flex align-items-center gap-3">
+                  <span class="d-flex">
+<!--                    <i class="ti ti-aperture"></i>-->
+                   <i class="fa-solid fa-users-medical"></i>
+                  </span>
+                  <span class="hide-menu">View profile</span>
+<!--                  <a href="">Add</a>-->
+                </div>
+
+              </a>
+            </li>
 <!--            <li class="sidebar-item">-->
 <!--              <a class="sidebar-link justify-content-between"-->
 <!--                href="{% url 'Department_name'%}" aria-expanded="false">-->
@@ -2034,7 +2048,7 @@
 
                   {% block content %}
                   <h1>wellcome</h1>
-                    <a href="{% url 'profileViewP' %}" class="btn btn-primary">View Profile</a>
+<!--                    <a href="{% url 'profileViewP' %}" class="btn btn-primary">View Profile</a>-->
                  {% endblock %}
                   <div class="table-responsive mt-4">
                     <table class="table mb-0 text-nowrap varient-table align-middle fs-3">

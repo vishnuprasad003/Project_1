@@ -28,7 +28,7 @@
   </thead>
   <tbody>
 
-     {% for data in data1 %}
+     {% for data,booking_count in data_with_count %}
      <tr>
       <td>{{data.date}}</td>
 
@@ -36,7 +36,13 @@
        <td>{{data.start_time}}</td>
         <td>{{data.end_time}}</td>
 
-      <td><a href="{% url 'AppointmentForm' data.id %}"><button class="btn btn-danger">Book your slot</button></a></td>
+        {% if booking_count < 10 %}
+
+
+             <td><a href="{% url 'AppointmentForm' data.id %}"><button class="btn btn-danger">Book your slot</button></a></td>
+        {% else %}
+            <td><a href="#">Slot are unavailable</a> </td>
+        {% endif %}
 
     </tr>
   {% endfor %}

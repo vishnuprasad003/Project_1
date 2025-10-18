@@ -1,56 +1,56 @@
-{% extends "patient/patientBase.html" %}
-{% load crispy_forms_tags %}
-{% block content%}
+<!--{% extends "patient/patientBase.html" %}-->
+<!--{% load crispy_forms_tags %}-->
+<!--{% block content%}-->
+<!--&lt;!&ndash;{% for message in messages %}&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="alert alert-primary" role="alert">&ndash;&gt;-->
+<!--&lt;!&ndash;        {{message}}&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    {% endfor %}&ndash;&gt;-->
 <!--{% for message in messages %}-->
-<!--    <div class="alert alert-primary" role="alert">-->
-<!--        {{message}}-->
-<!--    </div>-->
-<!--    {% endfor %}-->
-{% for message in messages %}
-<div class="alert alert-primary alert-dismissible fade show" role="alert" id="popupMessage">
-  {{ message }}
-</div>
-{% endfor %}
+<!--<div class="alert alert-primary alert-dismissible fade show" role="alert" id="popupMessage">-->
+<!--  {{ message }}-->
+<!--</div>-->
+<!--{% endfor %}-->
 
 
 
-<table class="table">
-  <thead>
-    <tr>
+<!--<table class="table">-->
+<!--  <thead>-->
+<!--    <tr>-->
 
-      <th scope="col">DATE</th>
+<!--      <th scope="col">DATE</th>-->
 
-      <th scope="col">START TIME</th>
-      <th scope="col">END TIME</th>
-      <th scope="col"></th>
+<!--      <th scope="col">START TIME</th>-->
+<!--      <th scope="col">END TIME</th>-->
+<!--      <th scope="col"></th>-->
 
-    </tr>
-  </thead>
-  <tbody>
-
-
-     <tr>
-      <td>{{data1.date}}</td>
+<!--    </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
 
 
-       <td>{{data1.start_time}}</td>
-        <td>{{data1.end_time}}</td>
+<!--     <tr>-->
+<!--      <td>{{data1.date}}</td>-->
 
-      <td><a href="#"><button class="btn btn-danger">Book your slot</button></a></td>
 
-    </tr>
+<!--       <td>{{data1.start_time}}</td>-->
+<!--        <td>{{data1.end_time}}</td>-->
 
-  </tbody>
-</table>
-<script>
-  // Wait for 5 seconds (5000ms), then fade out and remove the alert
-  setTimeout(function() {
-    const alert = document.getElementById('popupMessage');
-    if (alert) {
-      alert.classList.remove('show');
-      alert.classList.add('fade');
-      setTimeout(() => alert.remove(), 500); // remove after fade out
-    }
-  }, 5000);
-</script>
-{% endblock %}
+<!--      <td><a href="#"><button class="btn btn-danger">Book your slot</button></a></td>-->
+
+<!--    </tr>-->
+
+<!--  </tbody>-->
+<!--</table>-->
+<!--<script>-->
+<!--  // Wait for 5 seconds (5000ms), then fade out and remove the alert-->
+<!--  setTimeout(function() {-->
+<!--    const alert = document.getElementById('popupMessage');-->
+<!--    if (alert) {-->
+<!--      alert.classList.remove('show');-->
+<!--      alert.classList.add('fade');-->
+<!--      setTimeout(() => alert.remove(), 500); // remove after fade out-->
+<!--    }-->
+<!--  }, 5000);-->
+<!--</script>-->
+<!--{% endblock %}-->

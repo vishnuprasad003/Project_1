@@ -59,6 +59,17 @@ def scheduleDelete(request,id):
     data=doctor_shedule.objects.get(id=id)
     data.delete()
     return redirect("scheduleViewD")
+
+def scheduleUpdate(request,id):
+    data=doctor_shedule.objects.get(id=id)
+    form1=doctor_shedule_form(instance=data)
+    if request.method=="POST":
+        form2=doctor_shedule_form(request.POST,instance=data)
+        if form2.is_valid():
+            form2.save()
+        return redirect("scheduleViewD")
+    return render(request,"doctor/UpdateSchedule.html",{"update":form1})
+
 def booking_details(request):
     user_data=request.user
     bookingView=Doctor.objects.get(user=user_data)

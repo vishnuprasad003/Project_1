@@ -37,6 +37,7 @@ urlpatterns = [
     path('schedule',doctorviews.doctor_schedules,name="schedule"),
     path('scheduleViewD',doctorviews.scheduleViewD,name="scheduleViewD"),
     path('scheduleDelete/<int:id>/',doctorviews.scheduleDelete,name="scheduleDelete"),
+    path('scheduleUpdate/<int:id>/',doctorviews.scheduleUpdate,name="scheduleUpdate"),
     path('appointmentDetails',doctorviews.booking_details,name="appointmentDetails"),
 
 
