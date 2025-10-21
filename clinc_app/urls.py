@@ -14,6 +14,7 @@ urlpatterns = [
 
     path('formLogin',views.doctor_add,name="viewLogin"),
     path('patientLogin',views.patient_add,name="patientLogin"),
+    path('logout_fun',views.logout_fun,name="logout_fun"),
 
     path('patientUpdate/<int:id>/',adminviews.update_patient,name="PatientUpdate"),
     path('deletePatient/<int:id>/',adminviews.delete_patient,name="deletePatient"),

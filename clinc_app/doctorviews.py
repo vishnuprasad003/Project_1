@@ -1,10 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from clinc_app.filters import PatientFilter
 from clinc_app.form import Doctor_form, doctor_shedule_form
 from clinc_app.models import Doctor, Patient, doctor_shedule, BookingAppointment
 
-
+@login_required(login_url="Login_view")
 def detail(request):
     user_data = request.user
 
@@ -12,7 +13,7 @@ def detail(request):
     return render(request,"doctor/profile.html",{"data":doc})
 
 
-
+@login_required(login_url="Login_view")
 def edit(request,id):
 
     doct = Doctor.objects.get(id=id)
@@ -23,7 +24,7 @@ def edit(request,id):
             form.save()
         return redirect("detail")
     return render(request, "doctor/profileEdit.html", {"data": form1})
-
+@login_required(login_url="Login_view")
 def Patient_Details(request):
     data = Patient.objects.all()
     patient_details=PatientFilter(request.GET,queryset=data)
@@ -35,7 +36,7 @@ def Patient_Details(request):
 
 
     return render(request, "doctor/searchPatient.html", context)
-
+@login_required(login_url="Login_view")
 def doctor_schedules(request):
     user_data= request.user
     sche= Doctor.objects.get(user=user_data)
@@ -49,17 +50,20 @@ def doctor_schedules(request):
             return redirect("base2")
 
     return render(request,"doctor/doctor_schedule.html",{"data":form})
+@login_required(login_url="Login_view")
 def scheduleViewD(request):
     user_data= request.user
     scheduleView=Doctor.objects.get(user=user_data)
     data=doctor_shedule.objects.filter(doctor=scheduleView)
 
     return render(request,"doctor/schedule_view.html",{"scheduleview":data})
+@login_required(login_url="Login_view")
 def scheduleDelete(request,id):
     data=doctor_shedule.objects.get(id=id)
     data.delete()
     return redirect("scheduleViewD")
 
+@login_required(login_url="Login_view")
 def scheduleUpdate(request,id):
     data=doctor_shedule.objects.get(id=id)
     form1=doctor_shedule_form(instance=data)
@@ -70,6 +74,7 @@ def scheduleUpdate(request,id):
         return redirect("scheduleViewD")
     return render(request,"doctor/UpdateSchedule.html",{"update":form1})
 
+@login_required(login_url="Login_view")
 def booking_details(request):
     user_data=request.user
     bookingView=Doctor.objects.get(user=user_data)

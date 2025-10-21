@@ -100,6 +100,20 @@
 
               </a>
             </li>
+             <li class="sidebar-item">
+              <a class="sidebar-link justify-content-between"
+                href="{% url 'BookingDetailView' %}" aria-expanded="false">
+                <div class="d-flex align-items-center gap-3">
+                  <span class="d-flex">
+<!--                    <i class="ti ti-aperture"></i>-->
+                   <i class="fa-solid fa-users-medical"></i>
+                  </span>
+                  <span class="hide-menu">BookingDetail</span>
+<!--                  <a href="">Add</a>-->
+                </div>
+
+              </a>
+            </li>
 <!--            <li class="sidebar-item">-->
 <!--              <a class="sidebar-link justify-content-between"-->
 <!--                href="{% url 'Department_name'%}" aria-expanded="false">-->
@@ -1869,22 +1883,22 @@
                 <i class="ti ti-menu-2"></i>
               </a>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link " href="javascript:void(0)" id="drop1" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="ti ti-bell"></i>
-                <div class="notification bg-primary rounded-circle"></div>
-              </a>
-              <div class="dropdown-menu dropdown-menu-animate-up" aria-labelledby="drop1">
-                <div class="message-body">
-                  <a href="javascript:void(0)" class="dropdown-item">
-                    Item 1
-                  </a>
-                  <a href="javascript:void(0)" class="dropdown-item">
-                    Item 2
-                  </a>
-                </div>
-              </div>
-            </li>
+<!--            <li class="nav-item dropdown">-->
+<!--              <a class="nav-link " href="javascript:void(0)" id="drop1" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                <i class="ti ti-bell"></i>-->
+<!--                <div class="notification bg-primary rounded-circle"></div>-->
+<!--              </a>-->
+<!--              <div class="dropdown-menu dropdown-menu-animate-up" aria-labelledby="drop1">-->
+<!--                <div class="message-body">-->
+<!--                  <a href="javascript:void(0)" class="dropdown-item">-->
+<!--                    Item 1-->
+<!--                  </a>-->
+<!--                  <a href="javascript:void(0)" class="dropdown-item">-->
+<!--                    Item 2-->
+<!--                  </a>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </li>-->
           </ul>
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
@@ -1898,17 +1912,17 @@
                   <div class="message-body">
                     <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-user fs-6"></i>
-                      <p class="mb-0 fs-3">My Profile</p>
+                      <p class="mb-0 fs-3">{{request.user}}</p>
                     </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-mail fs-6"></i>
-                      <p class="mb-0 fs-3">My Account</p>
-                    </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-list-check fs-6"></i>
-                      <p class="mb-0 fs-3">My Task</p>
-                    </a>
-                    <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+<!--                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">-->
+<!--                      <i class="ti ti-mail fs-6"></i>-->
+<!--                      <p class="mb-0 fs-3">My Account</p>-->
+<!--                    </a>-->
+<!--                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">-->
+<!--                      <i class="ti ti-list-check fs-6"></i>-->
+<!--                      <p class="mb-0 fs-3">My Task</p>-->
+<!--                    </a>-->
+                    <a href="{% url 'logout_fun' %}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                   </div>
                 </div>
               </li>

@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from clinc_app.filters import departmentFilter
@@ -6,13 +7,14 @@ from clinc_app.form import Doctor_form, patient_form, Appointment_form
 from clinc_app.models import Patient, Department, Doctor, doctor_shedule, BookingAppointment
 
 
+@login_required(login_url="Login_view")
 def profileViewP(request):
     user_data = request.user
 
     patient = Patient.objects.get(user=user_data)
     return render(request,"patient/ProfilePatient.html",{"data":patient})
 
-
+@login_required(login_url="Login_view")
 def editP(request,id):
     doct = Patient.objects.get(id=id)
     form1 = patient_form(instance=doct)
@@ -22,7 +24,7 @@ def editP(request,id):
             form.save()
         return redirect("profileViewP")
     return render(request, "patient/editprofile.html", {"data": form1})
-
+@login_required(login_url="Login_view")
 def department_booking(request):
     data= Department.objects.all()
     department_filter=departmentFilter(request.GET,queryset=data)
@@ -34,12 +36,12 @@ def department_booking(request):
 
     }
     return render(request,"patient/bookingDetails.html",context)
-
+@login_required(login_url="Login_view")
 def FilterDoctor(request,id):
     data=Doctor.objects.filter(Doctor_Department=id)
 
     return render(request,"patient/filterDoctor.html",{"data1":data})
-
+@login_required(login_url="Login_view")
 def view_schedule(request,id):
     data=doctor_shedule.objects.filter(doctor=id)
     schedule_list=[]
@@ -55,7 +57,7 @@ def view_schedule(request,id):
 
     return render(request,"patient/doctor_schedule_view.html",{"data_with_count":count_and_data})
 
-
+@login_required(login_url="Login_view")
 def Appointment(request,id):
     user_data = request.user
     patient_data = Patient.objects.get(user=user_data)
@@ -77,13 +79,13 @@ def Appointment(request,id):
         return redirect("FilterSchedule",id=Doctor_details.id)
 
     # return render(request,"patient/new_scheduleView.html",{"data1":schedule_data})
-
+@login_required(login_url="Login_view")
 def booking_details_view(request):
     user_data=request.user
     booking_detailsView=Patient.objects.get(user=user_data)
     data=BookingAppointment.objects.filter(patient=booking_detailsView)
     return render(request,"patient/bookingDetailsView.html",{"bookingDetailView":data})
-
+@login_required(login_url="Login_view")
 def delete_booking_details(request,id):
     data=BookingAppointment.objects.get(id=id)
     data.delete()

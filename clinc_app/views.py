@@ -1,4 +1,5 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from pyexpat.errors import messages
 
@@ -9,6 +10,7 @@ from clinc_app.models import Department, Patient, Doctor
 # Create your views here.
 def index(request):
     return render(request,'index.html')
+@login_required(login_url="Login_view")
 def index1(request):
     return render(request,'index1.html')
 
@@ -146,11 +148,13 @@ def patient_add(request):
 
 
     return render(request,"login3.html",{"form_data":form_data,"form_data2":form_data2})
-
+@login_required(login_url="Login_view")
 def admin_base(request):
     return render(request,"admin/adminBase.html")
+@login_required(login_url="Login_view")
 def doctor_base(request):
     return render(request,"doctor/doctorBase.html")
+@login_required(login_url="Login_view")
 def patient_base(request):
     return render(request,"patient/patientBase.html")
 
@@ -179,3 +183,8 @@ def login_view(request):
 #     print(doc.id)
 #     print(doc.Doctor_name)
 #     print(doc.Doctor_department)
+
+
+def logout_fun(request):
+    logout(request)
+    return redirect('new')
